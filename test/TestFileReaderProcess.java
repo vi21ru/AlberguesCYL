@@ -6,31 +6,29 @@ import java.util.List;
 import java.util.ListIterator;
 
 import beans.Albergue;
-import processes.ReaderProcess;
+import processes.FileReaderProcess;
 
-abstract class TestReaderProcess {
+abstract class TestFileReaderProcess {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		String path="C:\\Users\\Alejandro\\Desktop\\workspace\\Mars\\Albergues\\src\\files\\albergues.csv";
+public static void main (String[] args) {
 		
-		
+	//String path="C:\\Users\\Alejandro\\Desktop\\REPOSGIT\\Angel\\AlberguesCYL\\AlberguesCYL\\src\\files\\albergues.csv"; //RUTA ABSOLUTA
+	String path="src\\files\\albergues.csv";//RUTA RELATIVA??
 		try {
-			ReaderProcess rp=new ReaderProcess(path);
-			ArrayList<Albergue> lista=(ArrayList<Albergue>) rp.read();
-			Iterator it= lista.iterator();
-			while(it.hasNext()){
-				System.out.println(it.next().toString());
+			FileReaderProcess readerProcess = new FileReaderProcess(path);	
+			List<Albergue> albergues = readerProcess.read();
+			System.out.println(albergues.size());
+			Iterator<Albergue> it = albergues.iterator();
+			while(it.hasNext()) {
+				Albergue albergue = it.next();
+				System.out.println("Nombre Albergue: " + albergue.getNombre());
 			}
-		}catch(FileNotFoundException ex){
-			
-			System.out.println("Fichero no encontrado");
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			System.out.println("IOException: "+e.getMessage());
 		}
-	}
-
+		catch(FileNotFoundException ex) {
+			System.out.println("Fichero no encontrado");
+		}
+		catch(IOException ex) {
+			System.out.println("IOException: " + ex.getMessage());
+		}
+}
 }
