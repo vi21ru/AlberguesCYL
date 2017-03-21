@@ -10,21 +10,23 @@ import java.util.List;
 
 import beans.Albergue;
 
-public class ReaderProcess implements IReader{
+public class FileReaderProcess implements IReader{
 
 
 	private String path;
 	private File file;
-	public ReaderProcess(String path)  throws IOException{
+	private BufferedReader br;
+	public FileReaderProcess(String path)  throws IOException{
 
 		this.path = path;
 		file=new File(this.path);
+		FileReader fr=new FileReader(this.file);
+		this.br=new BufferedReader(fr); 
 	}
 	@Override
 	public List<Albergue> read() throws IOException {
 		// TODO Auto-generated method stub
-		FileReader fr=new FileReader(this.file);
-		BufferedReader br=new BufferedReader(fr); 
+		
 		List<Albergue> listaAlberges=new ArrayList<Albergue>();
 		String linea=br.readLine();
 		linea=br.readLine();
