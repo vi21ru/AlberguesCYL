@@ -43,7 +43,7 @@ private String responseBody;
             };
             this.responseBody = httpclient.execute(httpget, responseHandler);
             System.out.println("----------------------------------------");
-            System.out.println(responseBody);
+            //System.out.println(responseBody);
             //String[] respuesta=responseBody.split("\"");
             //System.out.println(respuesta[0]);
         } finally {
@@ -60,7 +60,7 @@ private String responseBody;
 			
 			String[] partes=linea.split("\"");
 			String miLinea=this.getLine(partes);
-			System.out.println("Eliminando primera linea");
+			//System.out.println("Eliminando primera linea");
 			
 			String sResult=miLinea.substring(miLinea.indexOf("Albergue"));
 			//System.out.println("prueba eliminando primera linea:"+sResult);
