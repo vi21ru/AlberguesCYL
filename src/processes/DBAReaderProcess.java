@@ -10,6 +10,8 @@ public class DBAReaderProcess implements IReader{
 	@Override
 	public List read() throws Exception {
 		// TODO Auto-generated method stub
+		
+		
 		//Obtenemos la conexion a BBDD.
 				//DriverManager blablablalba
 				

@@ -72,6 +72,6 @@ public class EjemploGUI {
 		field.setText(texto);
 	}
 	public static void main(String[] args){
-		new EjemploGUI().fillGap("Hola marica!!");
+		new EjemploGUI().fillGap("Hola!!");
 	}
 }
