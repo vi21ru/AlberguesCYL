@@ -1,3 +1,9 @@
-/TestConnectionPostgreBD.class
-/processes/
 /bbdd/
+/beans/
+/processes/
+/ui/
+/TestConnectionPostgreBD.class
+/TestFileReaderProcess.class
+/TestMainMenu.class
+/TestReaderManager.class
+/TestURLReaderProcess.class
