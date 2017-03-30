@@ -1,5 +1,7 @@
 package ui;
 
+import ui.listeners.ListarAlberguesListener;
+
 public class MainPanel extends javax.swing.JFrame {
 
     /**
@@ -32,6 +34,7 @@ public class MainPanel extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btListAlbergue.setText("Listar Albergues");
+        btListAlbergue.addActionListener(new ListarAlberguesListener());
 
         btAddAlbergue.setText("Insertar Albergue");
 
