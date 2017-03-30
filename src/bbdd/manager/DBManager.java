@@ -1,5 +1,8 @@
 package bbdd.manager;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
 import bbdd.util.ConnectionMongoDB;
 import bbdd.util.ConnectionMysqlDB;
 import bbdd.util.ConnectionOracleDB;
@@ -14,27 +17,28 @@ public class DBManager {
 	private final static int SQLSERVER = 3;
 	private final static int MONGODB = 4;
 
-	public static IConnectionDB getConnection(String path){
+	public static Connection getConnection(String path,String user, String password) throws SQLException, ClassNotFoundException {
 		IConnectionDB IConnector =null;
 		int type=getType(path);
 		switch (type) {
-		case 0:
+		case POSTGRE:
 			IConnector= new ConnectionPostgreDB();
 			break;
-		case 1:
+		case MYSQL:
 			IConnector= new ConnectionMysqlDB();
 			break;
-		case 2:
+		case ORACLE:
 			IConnector= new ConnectionOracleDB();
 			break;
-		case 3:
+		case SQLSERVER:
 			IConnector= new ConnectionSqlSDB();
 			break;
-		default:
+		case MONGODB:
 			IConnector=new ConnectionMongoDB();
 			break;
 		}
-		return IConnector;
+		Connection conn = IConnector.createConnection(path, user, password);
+		return conn;
 	}
 	
 	private static int getType(String path){

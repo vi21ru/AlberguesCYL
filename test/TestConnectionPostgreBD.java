@@ -13,7 +13,7 @@ public class TestConnectionPostgreBD {
 
 		ConnectionPostgreDB pgConn=new ConnectionPostgreDB();
 		try {
-			Connection conn=pgConn.createConnection("jdbc:postgresql://localhost:5432/Albergues", "postgres", "admin");
+			Connection conn=pgConn.createConnection("jdbc:postgresql://localhost:5432/Albergues", "postgres", "postgres");
 			String query="Select * from albergues_schema.\"Albergues\"";
 			Statement st=conn.createStatement();
 			ResultSet sr=st.executeQuery(query);

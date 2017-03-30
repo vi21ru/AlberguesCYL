@@ -1,9 +1,11 @@
-/bbdd/
-/beans/
-/processes/
-/ui/
 /TestConnectionPostgreBD.class
 /TestFileReaderProcess.class
 /TestMainMenu.class
 /TestReaderManager.class
 /TestURLReaderProcess.class
+/bbdd/
+/beans/
+/files/
+/processes/
+/ui/
+/TestDBManager.class
