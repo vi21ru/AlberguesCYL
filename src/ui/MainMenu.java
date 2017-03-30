@@ -13,19 +13,21 @@ public class MainMenu extends JFrame{
 	
 	public void createMenu(){
 		
-		this.setSize(new Dimension(300,600));
+		this.setSize(new Dimension(400,600));
+		this.setTitle("Albergues de Castilla y León");
+		barraMenu();
 		
 		//Creamos Grid
 		GridLayout grid=new GridLayout(4, 1);
 		this.setLayout(grid);
 		
-		barraMenu();
 		//JPanel
 		JPanel panel=new JPanel();
 		
 		//Botones
 		JButton boton=new JButton("Ver lista Albergues");
-		this.add(boton, 0);
+		panel.add(boton);
+		this.add(panel);
 		this.setVisible(true);
 	}
 
@@ -34,9 +36,9 @@ public class MainMenu extends JFrame{
 		JMenuItem archivo=new JMenuItem("Archivo");
 		JMenuItem ver=new JMenuItem("Ver");
 		JMenuItem editar=new JMenuItem("Editar");
-		barraMenu.add(archivo, 1);
-		barraMenu.add(ver, 2);
-		barraMenu.add(editar, 3);
+		barraMenu.add(archivo, 0);
+		barraMenu.add(ver, 1);
+		barraMenu.add(editar, 2);
 		this.add(barraMenu);
 		barraMenu.setVisible(true);
 	}
