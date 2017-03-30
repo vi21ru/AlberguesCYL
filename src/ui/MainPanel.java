@@ -1,5 +1,6 @@
 package ui;
 
+import ui.listeners.InsertarAlbergueListener;
 import ui.listeners.ListarAlberguesListener;
 
 public class MainPanel extends javax.swing.JFrame {
@@ -37,7 +38,7 @@ public class MainPanel extends javax.swing.JFrame {
         btListAlbergue.addActionListener(new ListarAlberguesListener());
 
         btAddAlbergue.setText("Insertar Albergue");
-
+        btAddAlbergue.addActionListener(new InsertarAlbergueListener());
         btSearchAlbergue.setText("Buscar Albergue");
 
         btEditAlbergue.setText("Modificar Albergue");
