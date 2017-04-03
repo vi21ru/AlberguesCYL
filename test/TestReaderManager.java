@@ -13,6 +13,7 @@ public class TestReaderManager {
 		//System.out.println(listaAlbergues.get(0));
 		//System.out.println(listaAlbergues.get(300));
 		System.out.println(listaAlbergues.size());
+		System.out.println(listaAlbergues.get(0));
 	}
 
 }

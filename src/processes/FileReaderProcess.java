@@ -39,7 +39,10 @@ public class FileReaderProcess implements IReader{
 			String[] telefonos = new String[3];
 			for(int i=0;i<part.length;i++){
 				//"Tipo";"Nombre";"Dirección";"C.Postal";"Provincia";"Municipio";"Localidad";"Nucleo";"Teléfono 1";"Teléfono 2";"Teléfono 3";"Fax";"Email";"web";"Q Calidad";"Central Reservas";
+				System.out.println(part[8]);
 				switch (i) {
+				
+				
 					case 0: {a.setTipo(part[0]);break;}
 					case 1: {a.setNombre(part[1]);break;}
 					case 2: {a.setDireccion(part[2]);break;}
@@ -50,7 +53,8 @@ public class FileReaderProcess implements IReader{
 					case 7: {a.setNucleo(part[7]);break;}
 					case 8: {telefonos[0]=part[8];break;}
 					case 9: {telefonos[1]=part[9];break;}
-					case 10: {telefonos[2]=part[10];break;}
+					case 10: {telefonos[2]=part[10];a.setTelefono(telefonos);break;}
+					
 					case 11: {a.setFax(part[11]);break;}
 					case 12: {a.setEmail(part[12]);break;}
 					case 13: {a.setWeb(part[13]);break;}

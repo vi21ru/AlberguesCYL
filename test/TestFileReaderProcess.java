@@ -13,7 +13,7 @@ abstract class TestFileReaderProcess {
 public static void main (String[] args) {
 		
 	//String path="C:\\Users\\Alejandro\\Desktop\\REPOSGIT\\Angel\\AlberguesCYL\\AlberguesCYL\\src\\files\\albergues.csv"; //RUTA ABSOLUTA
-	String path="src\\files\\albergues.csv";//RUTA RELATIVA??
+	String path="resources\\albergues.csv";//RUTA RELATIVA??
 		try {
 			FileReaderProcess readerProcess = new FileReaderProcess(path);	
 			List<Albergue> albergues = readerProcess.read();
@@ -21,8 +21,10 @@ public static void main (String[] args) {
 			Iterator<Albergue> it = albergues.iterator();
 			while(it.hasNext()) {
 				Albergue albergue = it.next();
-				System.out.println("Nombre Albergue: " + albergue.getNombre());
+				System.out.println("Nombre Albergue: " + albergue.getTelefono()[0]);
 			}
+			
+			
 		}
 		catch(FileNotFoundException ex) {
 			System.out.println("Fichero no encontrado");

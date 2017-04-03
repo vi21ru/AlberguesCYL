@@ -30,14 +30,16 @@ public class DataTableAlbergues extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
 
+      //"Tipo";"Nombre";"Dirección";"C.Postal";"Provincia";"Municipio";"Localidad";"Nucleo";"Teléfono 1";"Teléfono 2";"Teléfono 3";"Fax";"Email";"web";"Q Calidad";"Central Reservas";
+        
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        columnas=new String [] {    "Nombre", "Direccion", "Provincia", "Codigo postal"};
+        columnas=new String [] {   "Tipo", "Nombre", "Direccion", "Codigo postal","Provincia","Municipio","Localidad","Nucleo","Telefono 1","Telefono 2","Telefono 3","Fax","Email","Web","Q Calidad","Central Reservas"};
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             parseList(albergues),columnas        
             
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class,java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -116,12 +118,26 @@ public class DataTableAlbergues extends javax.swing.JFrame {
     	System.out.println(numReg);
     	System.out.println(this.columnas.length);
     	while(it.hasNext()){
-    		
+    		String[] aux=new String[3];
     		Albergue a=(Albergue) it.next();
-    		arrayAlbergues[index][0]=a.getNombre();
-    		arrayAlbergues[index][1]=a.getDireccion();
-    		arrayAlbergues[index][2]=a.getProvincia();
+    		arrayAlbergues[index][0]=a.getTipo();
+    		arrayAlbergues[index][1]=a.getNombre();
+    		arrayAlbergues[index][2]=a.getDireccion();
     		arrayAlbergues[index][3]=a.getCodigoPostal();
+    		arrayAlbergues[index][4]=a.getProvincia();
+    		arrayAlbergues[index][5]=a.getLocalidad();
+    		arrayAlbergues[index][6]=a.getMunicipio();
+    		arrayAlbergues[index][7]=a.getNucleo();
+    		aux=a.getTelefono();
+    		System.out.println(a.getTelefono().toString());
+    		arrayAlbergues[index][8]=a.getTelefono()[0];
+    		arrayAlbergues[index][9]=a.getTelefono()[1];
+    		arrayAlbergues[index][10]=a.getTelefono()[2];
+    		arrayAlbergues[index][11]=a.getFax();
+    		arrayAlbergues[index][12]=a.getEmail();
+    		arrayAlbergues[index][13]=a.getWeb();
+    		arrayAlbergues[index][14]=a.getQcalidad();
+    		arrayAlbergues[index][15]=a.getCentralReservas();
     		index=index+1;
     	}
     	

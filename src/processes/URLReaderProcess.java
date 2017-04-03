@@ -94,7 +94,7 @@ private String responseBody;
 						case 7: {a.setNucleo(part[7]);break;}
 						case 8: {telefonos[0]=part[8];break;}
 						case 9: {telefonos[1]=part[9];break;}
-						case 10: {telefonos[2]=part[10];break;}
+						case 10: {telefonos[2]=part[10];a.setTelefono(telefonos);break;}
 						case 11: {a.setFax(part[11]);break;}
 						case 12: {a.setEmail(part[12]);break;}
 						case 13: {a.setWeb(part[13]);break;}
