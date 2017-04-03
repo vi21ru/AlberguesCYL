@@ -1,7 +1,10 @@
 package ui;
 
+import java.awt.Dimension;
 import java.util.Iterator;
 import java.util.List;
+
+import javax.swing.GroupLayout;
 
 import beans.Albergue;
 
@@ -9,13 +12,20 @@ public class DataTableAlbergues extends javax.swing.JFrame {
 
 	String[] columnas;
 	static List albergues;
+	int width;
+	int heigth;
     /**
      * Creates new form DataTableAlbergues
      */
     public DataTableAlbergues(List albergues) {
     	this.albergues=albergues;
         initComponents(albergues);
+        this.setExtendedState(MAXIMIZED_BOTH);
+        
         this.setVisible(true);
+        
+        width=this.getWidth();
+        heigth=this.getHeight();
     }
 
     /**
@@ -29,6 +39,7 @@ public class DataTableAlbergues extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        
 
       //"Tipo";"Nombre";"Dirección";"C.Postal";"Provincia";"Municipio";"Localidad";"Nucleo";"Teléfono 1";"Teléfono 2";"Teléfono 3";"Fax";"Email";"web";"Q Calidad";"Central Reservas";
         
@@ -46,26 +57,33 @@ public class DataTableAlbergues extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        jTable2.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        
         jScrollPane1.setViewportView(jTable2);
+        
+        
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        
         getContentPane().setLayout(layout);
+        
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        pack();
+        
     }// </editor-fold>                        
 
     /**
