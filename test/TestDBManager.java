@@ -11,7 +11,7 @@ public class TestDBManager {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		try {
-			Connection conn=DBManager.getConnection("jdbc:postgresql://localhost:5432/Albergues","postgres","postgres");
+			Connection conn=DBManager.getConnection("jdbc:postgresql://localhost:5432/Albergues","postgres","admin");
 			String query="Select * from albergues_schema.\"Albergues\"";
 			Statement st=conn.createStatement();
 			ResultSet sr=st.executeQuery(query);

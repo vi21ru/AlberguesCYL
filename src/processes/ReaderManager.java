@@ -17,7 +17,7 @@ public class ReaderManager {
 			System.out.println("Creando reader de tipo File");
 			return fileReaderProcess;
 			}catch(Exception ex2){
-				DBAReaderProcess dbaReaderProcess=new DBAReaderProcess();
+				DBAReaderProcess dbaReaderProcess=new DBAReaderProcess("");
 				System.out.println("Creado reader de tipo DBA");
 				return dbaReaderProcess;
 				

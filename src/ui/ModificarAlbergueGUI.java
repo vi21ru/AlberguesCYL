@@ -1,20 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ui;
 
-/**
- *
- * @author Alex
- */
-public class InsertarAlbergueGUI extends javax.swing.JFrame {
+public class ModificarAlbergueGUI extends javax.swing.JFrame {
 
     /**
-     * Creates new form formularioInsertar
+     * Creates new form formularioModificar
      */
-    public InsertarAlbergueGUI() {
+    public ModificarAlbergueGUI() {
         initComponents();
     }
 
@@ -232,7 +223,7 @@ public class InsertarAlbergueGUI extends javax.swing.JFrame {
                     .addComponent(tfReservas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        lbTitulo.setText("FORMULARIO DE REGISTRO DE ALBERGUE");
+        lbTitulo.setText("MODIFICAR REGISTRO DE ALBERGUE");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -292,20 +283,20 @@ public class InsertarAlbergueGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InsertarAlbergueGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarAlbergueGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InsertarAlbergueGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarAlbergueGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InsertarAlbergueGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarAlbergueGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InsertarAlbergueGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarAlbergueGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InsertarAlbergueGUI().setVisible(true);
+                new ModificarAlbergueGUI().setVisible(true);
             }
         });
     }
