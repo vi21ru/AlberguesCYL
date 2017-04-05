@@ -16,6 +16,7 @@ public class InsertarAlbergueGUI extends javax.swing.JFrame {
      */
     public InsertarAlbergueGUI() {
         initComponents();
+        this.setVisible(true);
     }
 
     /**
