@@ -5,6 +5,7 @@
  */
 package ui;
 
+import beans.Albergue;
 import ui.listeners.AddAlbergueListener;
 
 /**
@@ -33,7 +34,8 @@ public class InsertarAlbergueGUI extends javax.swing.JFrame {
 
         btAceptar = new javax.swing.JButton();
         //llama a listener add Albergue
-        btAceptar.addActionListener(new AddAlbergueListener());
+        
+        btAceptar.addActionListener(new AddAlbergueListener(this));
         btCancelar = new javax.swing.JButton();
         panelFormulario = new javax.swing.JPanel();
         lbTipo = new javax.swing.JLabel();
@@ -316,7 +318,121 @@ public class InsertarAlbergueGUI extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify                     
+    
+    public javax.swing.JTextField getTfCP() {
+		return tfCP;
+	}
+
+	public void setTfCP(javax.swing.JTextField tfCP) {
+		this.tfCP = tfCP;
+	}
+
+	public javax.swing.JTextField getTfDireccion() {
+		return tfDireccion;
+	}
+
+	public void setTfDireccion(javax.swing.JTextField tfDireccion) {
+		this.tfDireccion = tfDireccion;
+	}
+
+	public javax.swing.JTextField getTfEmail() {
+		return tfEmail;
+	}
+
+	public void setTfEmail(javax.swing.JTextField tfEmail) {
+		this.tfEmail = tfEmail;
+	}
+
+	public javax.swing.JTextField getTfFax() {
+		return tfFax;
+	}
+
+	public void setTfFax(javax.swing.JTextField tfFax) {
+		this.tfFax = tfFax;
+	}
+
+	public javax.swing.JTextField getTfLocalidad() {
+		return tfLocalidad;
+	}
+
+	public void setTfLocalidad(javax.swing.JTextField tfLocalidad) {
+		this.tfLocalidad = tfLocalidad;
+	}
+
+	public javax.swing.JTextField getTfMunicipio() {
+		return tfMunicipio;
+	}
+
+	public void setTfMunicipio(javax.swing.JTextField tfMunicipio) {
+		this.tfMunicipio = tfMunicipio;
+	}
+
+	public javax.swing.JTextField getTfNombre() {
+		return tfNombre;
+	}
+
+	public void setTfNombre(javax.swing.JTextField tfNombre) {
+		this.tfNombre = tfNombre;
+	}
+
+	public javax.swing.JTextField getTfNucleo() {
+		return tfNucleo;
+	}
+
+	public void setTfNucleo(javax.swing.JTextField tfNucleo) {
+		this.tfNucleo = tfNucleo;
+	}
+
+	public javax.swing.JTextField getTfReservas() {
+		return tfReservas;
+	}
+
+	public void setTfReservas(javax.swing.JTextField tfReservas) {
+		this.tfReservas = tfReservas;
+	}
+
+	public javax.swing.JTextField getTfTelefono1() {
+		return tfTelefono1;
+	}
+
+	public void setTfTelefono1(javax.swing.JTextField tfTelefono1) {
+		this.tfTelefono1 = tfTelefono1;
+	}
+
+	public javax.swing.JTextField getTfTelefono2() {
+		return tfTelefono2;
+	}
+
+	public void setTfTelefono2(javax.swing.JTextField tfTelefono2) {
+		this.tfTelefono2 = tfTelefono2;
+	}
+
+	public javax.swing.JTextField getTfTelefono3() {
+		return tfTelefono3;
+	}
+
+	public void setTfTelefono3(javax.swing.JTextField tfTelefono3) {
+		this.tfTelefono3 = tfTelefono3;
+	}
+
+	public javax.swing.JTextField getTfTipo() {
+		return tfTipo;
+	}
+
+	public void setTfTipo(javax.swing.JTextField tfTipo) {
+		this.tfTipo = tfTipo;
+	}
+
+	public javax.swing.JTextField getTfWeb() {
+		return tfWeb;
+	}
+
+	public void setTfWeb(javax.swing.JTextField tfWeb) {
+		this.tfWeb = tfWeb;
+	}
+
+
+	// Variables declaration - do not modify                     
     private javax.swing.JButton btAceptar;
     private javax.swing.JButton btCancelar;
     private javax.swing.JComboBox<String> cbCalidad;

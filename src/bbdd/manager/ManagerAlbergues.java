@@ -58,26 +58,26 @@ public class ManagerAlbergues implements IManager{
 	@Override
 	public void insert(Object obj) throws SQLException {
 		// TODO Auto-generated method stub
-		String sql="INSERT INTO albergues_schema.\"Albergues\"(id, tipo, nombre, direccion, cpostal, provincia, municipio, localidad,nucleo, telefono1, telefono2, telefono3, fax, email, web, qcalidad,centralreservas) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		String sql="INSERT INTO albergues_schema.\"Albergues\"( tipo, nombre, direccion, cpostal, provincia, municipio, localidad,nucleo, telefono1, telefono2, telefono3, fax, email, web, qcalidad,centralreservas) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 		PreparedStatement pst=conn.prepareStatement(sql);
 		Albergue a=(Albergue) obj;
-		pst.setString(2, a.getTipo());
-		pst.setString(3, a.getNombre());
-		pst.setString(4, a.getDireccion());
-		pst.setInt(5, a.getCodigoPostal());
-		pst.setString(6, a.getProvincia());
-		pst.setString(7, a.getMunicipio());
-		pst.setString(8, a.getLocalidad());
-		pst.setString(9, a.getNucleo());
-		pst.setInt(10, Integer.parseInt((a.getTelefono()[0]!=null) ? a.getTelefono()[0] : "0"));
-		pst.setInt(11, Integer.parseInt((a.getTelefono()[1]!=null) ? a.getTelefono()[1] : "0"));
-		pst.setInt(12, Integer.parseInt((a.getTelefono()[2]!=null) ? a.getTelefono()[2] : "0"));
-		pst.setString(13, a.getFax());
-		pst.setString(14, a.getEmail());
-		pst.setString(15, a.getWeb());
-		pst.setString(16, a.getQcalidad());
-		pst.setString(17, a.getCentralReservas());
-	
+		pst.setString(1, a.getTipo());
+		pst.setString(2, a.getNombre());
+		pst.setString(3, a.getDireccion());
+		pst.setInt(4, a.getCodigoPostal());
+		pst.setString(5, a.getProvincia());
+		pst.setString(6, a.getMunicipio());
+		pst.setString(7, a.getLocalidad());
+		pst.setString(8, a.getNucleo());
+		pst.setInt(9, Integer.parseInt((a.getTelefono()[0]!=null) ? a.getTelefono()[0] : "0"));
+		pst.setInt(10, Integer.parseInt((a.getTelefono()[1]!=null) ? a.getTelefono()[1] : "0"));
+		pst.setInt(11, Integer.parseInt((a.getTelefono()[2]!=null) ? a.getTelefono()[2] : "0"));
+		pst.setString(12, a.getFax());
+		pst.setString(13, a.getEmail());
+		pst.setString(14, a.getWeb());
+		pst.setString(15, a.getQcalidad());
+		pst.setString(16, a.getCentralReservas());
+		pst.executeUpdate();
 	}
 
 	@Override
