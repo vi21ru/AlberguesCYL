@@ -69,15 +69,15 @@ public class ManagerAlbergues implements IManager{
 		pst.setString(7, a.getMunicipio());
 		pst.setString(8, a.getLocalidad());
 		pst.setString(9, a.getNucleo());
-		pst.setInt(10, Integer.parseInt(a.getTelefono()[0]));
-		pst.setInt(11, Integer.parseInt(a.getTelefono()[1]));
-		pst.setInt(12, Integer.parseInt(a.getTelefono()[2]));
+		pst.setInt(10, Integer.parseInt((a.getTelefono()[0]!=null) ? a.getTelefono()[0] : "0"));
+		pst.setInt(11, Integer.parseInt((a.getTelefono()[1]!=null) ? a.getTelefono()[1] : "0"));
+		pst.setInt(12, Integer.parseInt((a.getTelefono()[2]!=null) ? a.getTelefono()[2] : "0"));
 		pst.setString(13, a.getFax());
 		pst.setString(14, a.getEmail());
 		pst.setString(15, a.getWeb());
 		pst.setString(16, a.getQcalidad());
 		pst.setString(17, a.getCentralReservas());
-
+	
 	}
 
 	@Override
