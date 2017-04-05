@@ -1,14 +1,8 @@
 package processes;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
-import bbdd.manager.DBManager;
 import bbdd.manager.ManagerAlbergues;
-import beans.Albergue;
 
 public class DBAReaderProcess implements IReader{
 

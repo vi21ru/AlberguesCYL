@@ -1,6 +1,7 @@
 package bbdd.manager;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -55,9 +56,21 @@ public class ManagerAlbergues implements IManager{
 	}
 
 	@Override
-	public void insert(Object obj) {
+	public void insert(Object obj) throws SQLException {
 		// TODO Auto-generated method stub
-		
+		String sql="INSERT INTO albergues_schema.\"Albergues\"(id, tipo, nombre, direccion, cpostal, provincia, municipio, localidad,nucleo, telefono1, telefono2, telefono3, fax, email, web, qcalidad,centralreservas) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		PreparedStatement pst=conn.prepareStatement(sql);
+		Albergue a=(Albergue) obj;
+		pst.setString(2, a.getTipo());
+		pst.setString(3, a.getTipo());
+		pst.setString(2, a.getTipo());
+		pst.setString(2, a.getTipo());
+		pst.setString(2, a.getTipo());
+		pst.setString(2, a.getTipo());
+		pst.setString(2, a.getTipo());
+		pst.setString(2, a.getTipo());
+		pst.setString(2, a.getTipo());
+		pst.setString(2, a.getTipo());
 	}
 
 	@Override
