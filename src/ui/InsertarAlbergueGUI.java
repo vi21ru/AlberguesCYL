@@ -5,6 +5,8 @@
  */
 package ui;
 
+import ui.listeners.AddAlbergueListener;
+
 /**
  *
  * @author Alex
@@ -17,6 +19,7 @@ public class InsertarAlbergueGUI extends javax.swing.JFrame {
     public InsertarAlbergueGUI() {
         initComponents();
         this.setVisible(true);
+        
     }
 
     /**
@@ -29,6 +32,8 @@ public class InsertarAlbergueGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         btAceptar = new javax.swing.JButton();
+        //llama a listener add Albergue
+        btAceptar.addActionListener(new AddAlbergueListener());
         btCancelar = new javax.swing.JButton();
         panelFormulario = new javax.swing.JPanel();
         lbTipo = new javax.swing.JLabel();
