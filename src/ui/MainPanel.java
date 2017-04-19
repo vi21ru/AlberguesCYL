@@ -1,7 +1,10 @@
 package ui;
 
+import ui.listeners.BuscarAlbergueListener;
 import ui.listeners.InsertarAlbergueListener;
 import ui.listeners.ListarAlberguesListener;
+import ui.listeners.ModificarAlbergueListener;
+import ui.listeners.PrintAlberguesListener;
 
 public class MainPanel extends javax.swing.JFrame {
 
@@ -40,10 +43,13 @@ public class MainPanel extends javax.swing.JFrame {
         btAddAlbergue.setText("Insertar Albergue");
         btAddAlbergue.addActionListener(new InsertarAlbergueListener());
         btSearchAlbergue.setText("Buscar Albergue");
+        btSearchAlbergue.addActionListener(new BuscarAlbergueListener());
 
         btEditAlbergue.setText("Modificar Albergue");
+        btEditAlbergue.addActionListener(new ModificarAlbergueListener());
 
         btPrintAlbergues.setText("Imprimir lista Albergues");
+        btPrintAlbergues.addActionListener(new PrintAlberguesListener());
 
         btDeleteAlbergue.setText("Eliminar Albergue");
 

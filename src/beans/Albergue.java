@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class Albergue {
 
+	private int id;
 	private String tipo;
 	private String nombre;
 	private String direccion;
@@ -18,6 +19,13 @@ public class Albergue {
 	private String web;
 	private String Qcalidad;
 	private String centralReservas;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getTipo() {
 		return tipo;
 	}

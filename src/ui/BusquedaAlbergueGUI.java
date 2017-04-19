@@ -7,6 +7,7 @@ public class BusquedaAlbergueGUI extends javax.swing.JFrame {
 	     */
 	    public BusquedaAlbergueGUI() {
 	        initComponents();
+	        this.setVisible(true);
 	    }
 
 	    /**

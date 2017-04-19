@@ -24,7 +24,32 @@ public class ManagerAlbergues implements IManager{
 		
 	}
 	
-	
+	public Albergue select(int id)throws SQLException{
+		String query ="SELECT * FROM albergues_schema.\"Albergues\" WHERE id ="+ "'" + id + "'";
+		Statement st=conn.createStatement();
+		ResultSet rs=st.executeQuery(query);
+		Albergue a=new Albergue();
+		while(rs.next()){
+			
+			a.setId(rs.getInt(1));
+			a.setTipo(rs.getString(2));
+			a.setNombre(rs.getString(3));
+			a.setDireccion(rs.getString(4));
+			a.setCodigoPostal(rs.getInt(5));
+			a.setProvincia(rs.getString(6));
+			a.setMunicipio(rs.getString(7));
+			a.setLocalidad(rs.getString(8));
+			a.setNucleo(rs.getString(9));
+			a.setTelefono(new String[]{rs.getString(10),rs.getString(11),rs.getString(12)});
+			a.setFax(rs.getString(13));
+			a.setEmail(rs.getString(14));
+			a.setWeb(rs.getString(15));
+			a.setQcalidad(rs.getString(16));
+			a.setCentralReservas(rs.getString(17));
+		}
+		return a;
+		
+	}
 	
 	@Override
 	public Collection select() throws SQLException {
