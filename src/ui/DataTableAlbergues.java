@@ -39,7 +39,8 @@ public class DataTableAlbergues extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        
+        jLabel1 = new javax.swing.JLabel();
+        tfBusqueda = new javax.swing.JTextField();
 
       //"Tipo";"Nombre";"Dirección";"C.Postal";"Provincia";"Municipio";"Localidad";"Nucleo";"Teléfono 1";"Teléfono 2";"Teléfono 3";"Fax";"Email";"web";"Q Calidad";"Central Reservas";
         
@@ -124,6 +125,8 @@ public class DataTableAlbergues extends javax.swing.JFrame {
     // Variables declaration - do not modify                     
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField tfBusqueda;
     // End of variables declaration      
     
     private Object[][] parseList(List albergues){
@@ -161,4 +164,5 @@ public class DataTableAlbergues extends javax.swing.JFrame {
     	
     	return arrayAlbergues;
     } 
+
 }

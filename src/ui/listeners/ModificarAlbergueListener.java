@@ -2,7 +2,10 @@ package ui.listeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
+import beans.Albergue;
 import processes.IReader;
 import processes.ReaderManager;
 import ui.ModificarAlbergueGUI;
@@ -16,14 +19,22 @@ public class ModificarAlbergueListener implements ActionListener{
 		
 		
 		//La idea seria mostrar un comboBox con un selector por id... o seleccionar desde DateTable...
+		List lista=null;
+		
+		
+		 
 		try {
 			IReader reader=rm.getReader();
-			reader.read();
+			lista=reader.read();
+			
+			
+		
+			
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		new ModificarAlbergueGUI();
+		new ModificarAlbergueGUI(lista);
 	}
 
 }

@@ -1,12 +1,37 @@
 package ui;
 
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.List;
+
+import beans.Albergue;
+
 public class ModificarAlbergueGUI extends javax.swing.JFrame {
 
     /**
-     * Creates new form formularioModificar
+     * Creates new form formularioInsertar
      */
-    public ModificarAlbergueGUI() {
-        initComponents();
+	private String[] arrayNombres;
+	private List  lista;
+    public ModificarAlbergueGUI(List lista) {
+    	int numElements=0;
+		
+		numElements=lista.size();
+		int indice=0;
+		arrayNombres=new String[numElements];
+		for (Object obj : lista) {
+			Albergue albergue=(Albergue)obj;
+			arrayNombres[indice]=albergue.getNombre();
+			indice++;
+		}
+    	
+    	this.lista=lista;
+    	
+    	
+    	initComponents();
+    	this.setVisible(true);
+        
+       
     }
 
     /**
@@ -54,6 +79,33 @@ public class ModificarAlbergueGUI extends javax.swing.JFrame {
         tfEmail = new javax.swing.JTextField();
         cbCalidad = new javax.swing.JComboBox<>();
         lbTitulo = new javax.swing.JLabel();
+        cbLista = new javax.swing.JComboBox(arrayNombres);
+        cbLista.addItemListener(new ItemListener(){
+
+        	@Override
+        	public void itemStateChanged(ItemEvent e) {
+        		
+        		// TODO Auto-generated method stub
+        		if (e.getStateChange() == ItemEvent.SELECTED) {
+        	          item =e.getItem();
+        	          // do something with object
+        	          //
+        	          for (Object a : lista) {
+						Albergue miAlbergue=(Albergue)a;
+						if(((String)item).equalsIgnoreCase(miAlbergue.getNombre())){
+							tfNombre.setText(miAlbergue.getNombre());
+							tfTipo.setText(miAlbergue.getTipo());
+							tfDireccion.setText(miAlbergue.getDireccion());
+							cbProvincia.setSelectedItem(miAlbergue.getProvincia());
+						}
+					}
+        	          System.out.println(item.toString());
+        	       }
+        		
+        	}});
+        
+        
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -173,7 +225,7 @@ public class ModificarAlbergueGUI extends javax.swing.JFrame {
         panelFormularioLayout.setVerticalGroup(
             panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFormularioLayout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -223,7 +275,9 @@ public class ModificarAlbergueGUI extends javax.swing.JFrame {
                     .addComponent(tfReservas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        lbTitulo.setText("MODIFICAR REGISTRO DE ALBERGUE");
+        lbTitulo.setText("FORMULARIO DE REGISTRO DE ALBERGUE");
+
+        jLabel2.setText("jLabel2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -241,8 +295,12 @@ public class ModificarAlbergueGUI extends javax.swing.JFrame {
                         .addComponent(btCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(22, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lbTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbLista, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(181, 181, 181))
         );
         layout.setVerticalGroup(
@@ -250,13 +308,17 @@ public class ModificarAlbergueGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(lbTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbLista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btAceptar)
                     .addComponent(btCancelar))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
@@ -296,7 +358,7 @@ public class ModificarAlbergueGUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ModificarAlbergueGUI().setVisible(true);
+                new ModificarAlbergueGUI(null).setVisible(true);
             }
         });
     }
@@ -305,8 +367,11 @@ public class ModificarAlbergueGUI extends javax.swing.JFrame {
     private javax.swing.JButton btAceptar;
     private javax.swing.JButton btCancelar;
     private javax.swing.JComboBox<String> cbCalidad;
+    private javax.swing.JComboBox<String> cbLista;
+    
     private javax.swing.JComboBox<String> cbProvincia;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lbCP;
     private javax.swing.JLabel lbCalidad;
     private javax.swing.JLabel lbCentralReservas;
@@ -338,5 +403,7 @@ public class ModificarAlbergueGUI extends javax.swing.JFrame {
     private javax.swing.JTextField tfTelefono3;
     private javax.swing.JTextField tfTipo;
     private javax.swing.JTextField tfWeb;
+    private Object item;
+    
     // End of variables declaration                   
 }

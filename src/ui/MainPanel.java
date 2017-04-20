@@ -34,7 +34,7 @@ public class MainPanel extends javax.swing.JFrame {
         barraMenu = new javax.swing.JMenuBar();
         archivoItem = new javax.swing.JMenu();
         editarItem = new javax.swing.JMenu();
-
+        
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btListAlbergue.setText("Listar Albergues");
@@ -43,7 +43,7 @@ public class MainPanel extends javax.swing.JFrame {
         btAddAlbergue.setText("Insertar Albergue");
         btAddAlbergue.addActionListener(new InsertarAlbergueListener());
         btSearchAlbergue.setText("Buscar Albergue");
-        btSearchAlbergue.addActionListener(new BuscarAlbergueListener());
+        btSearchAlbergue.addActionListener(new ListarAlberguesListener());
 
         btEditAlbergue.setText("Modificar Albergue");
         btEditAlbergue.addActionListener(new ModificarAlbergueListener());
@@ -162,6 +162,7 @@ public class MainPanel extends javax.swing.JFrame {
     private javax.swing.JButton btSearchAlbergue;
     private javax.swing.JMenu editarItem;
     private javax.swing.JPanel panelBotones;
+
     // End of variables declaration                   
 }
 
