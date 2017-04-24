@@ -5,6 +5,7 @@ import java.awt.event.ItemListener;
 import java.util.List;
 
 import beans.Albergue;
+import ui.listeners.GuardarCambiosListener;
 
 public class ModificarAlbergueGUI extends javax.swing.JFrame {
 
@@ -93,24 +94,39 @@ public class ModificarAlbergueGUI extends javax.swing.JFrame {
         	          for (Object a : lista) {
 						Albergue miAlbergue=(Albergue)a;
 						if(((String)item).equalsIgnoreCase(miAlbergue.getNombre())){
+							
+							//tfId.setText(String.valueOf(miAlbergue.getId()));
 							tfNombre.setText(miAlbergue.getNombre());
 							tfTipo.setText(miAlbergue.getTipo());
 							tfDireccion.setText(miAlbergue.getDireccion());
 							cbProvincia.setSelectedItem(miAlbergue.getProvincia());
+							tfCP.setText(String.valueOf(miAlbergue.getCodigoPostal()));
+							tfMunicipio.setText(miAlbergue.getMunicipio());
+							tfLocalidad.setText(miAlbergue.getLocalidad());
+							tfTelefono1.setText(miAlbergue.getTelefono()[0]);
+							tfTelefono2.setText(miAlbergue.getTelefono()[1]);
+							tfTelefono3.setText(miAlbergue.getTelefono()[2]);
+							tfFax.setText(miAlbergue.getFax());
+							tfWeb.setText(miAlbergue.getWeb());
+							tfEmail.setText(miAlbergue.getEmail());
+							tfReservas.setText(miAlbergue.getCentralReservas());
+						
 						}
 					}
-        	          System.out.println(item.toString());
+        	          //System.out.println(item.toString());
         	       }
         		
         	}});
         
-        
         jLabel2 = new javax.swing.JLabel();
+        //lbId = new javax.swing.JLabel();
+        //tfId = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btAceptar.setText("Aceptar");
-
+        Albergue aux=RegistryUpdates();
+        btAceptar.addActionListener(new GuardarCambiosListener(aux));
         btCancelar.setText("Cancelar");
 
         lbTipo.setText("Tipo:");
@@ -118,12 +134,6 @@ public class ModificarAlbergueGUI extends javax.swing.JFrame {
         lbNombre.setText("Nombre:");
 
         lbDireccion.setText("Direccion:");
-
-        tfDireccion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfDireccionActionPerformed(evt);
-            }
-        });
 
         lbCP.setText("C. Postal:");
 
@@ -161,22 +171,26 @@ public class ModificarAlbergueGUI extends javax.swing.JFrame {
             panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFormularioLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(panelFormularioLayout.createSequentialGroup()
+                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFormularioLayout.createSequentialGroup()
                         .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(lbMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(4, 4, 4)
+                            .addComponent(lbCP)
+                            .addComponent(lbProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbDireccion))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfMunicipio)
-                            .addComponent(tfLocalidad)))
+                            .addGroup(panelFormularioLayout.createSequentialGroup()
+                                .addComponent(cbProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 98, Short.MAX_VALUE))
+                            .addComponent(tfCP)
+                            .addComponent(tfDireccion)))
                     .addGroup(panelFormularioLayout.createSequentialGroup()
                         .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbNombre)
                             .addComponent(lbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                            .addComponent(tfNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
                             .addComponent(tfTipo)))
                     .addGroup(panelFormularioLayout.createSequentialGroup()
                         .addComponent(lbNucleo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -184,43 +198,46 @@ public class ModificarAlbergueGUI extends javax.swing.JFrame {
                         .addComponent(tfNucleo))
                     .addGroup(panelFormularioLayout.createSequentialGroup()
                         .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbCP)
-                            .addComponent(lbProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbDireccion))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel1)
+                            .addComponent(lbMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfDireccion)
-                            .addComponent(tfCP)
-                            .addComponent(cbProvincia, javax.swing.GroupLayout.Alignment.TRAILING, 0, 125, Short.MAX_VALUE))))
-                .addGap(27, 27, 27)
-                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panelFormularioLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfMunicipio))
+                            .addGroup(panelFormularioLayout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addComponent(tfLocalidad)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelFormularioLayout.createSequentialGroup()
-                        .addComponent(lbCentralReservas)
-                        .addGap(18, 18, 18)
-                        .addComponent(tfReservas))
-                    .addComponent(lbTelefono2)
-                    .addComponent(lbTelefono3)
-                    .addComponent(lbFax, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbWeb, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panelFormularioLayout.createSequentialGroup()
+                        .addComponent(lbTelefono2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(tfTelefono2, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelFormularioLayout.createSequentialGroup()
+                        .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbTelefono1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(tfTelefono2, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
-                                .addComponent(tfTelefono1)))
-                        .addComponent(tfTelefono3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(tfFax, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(tfWeb, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbTelefono3)
+                            .addComponent(lbFax, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                        .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfFax, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfTelefono3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfTelefono1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panelFormularioLayout.createSequentialGroup()
                         .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbEmail)
-                            .addComponent(lbCalidad))
-                        .addGap(38, 38, 38)
+                            .addComponent(lbCalidad)
+                            .addComponent(lbWeb, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbCentralReservas))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbCalidad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tfEmail))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(tfReservas)
+                            .addComponent(tfWeb)
+                            .addComponent(tfEmail)
+                            .addGroup(panelFormularioLayout.createSequentialGroup()
+                                .addComponent(cbCalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap())
         );
         panelFormularioLayout.setVerticalGroup(
             panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,31 +294,40 @@ public class ModificarAlbergueGUI extends javax.swing.JFrame {
 
         lbTitulo.setText("FORMULARIO DE REGISTRO DE ALBERGUE");
 
-        jLabel2.setText("jLabel2");
+        jLabel2.setText("Selecciona Albergue: ");
+
+        //lbId.setText("ID: ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(panelFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(btAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(59, 59, 59)
-                        .addComponent(btCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(panelFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(13, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbLista, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cbLista, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(79, 79, 79)
+                       // .addComponent(lbId, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                       // .addGap(39, 39, 39)
+                       // .addComponent(tfId)
+                        ))
                 .addGap(181, 181, 181))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(124, 124, 124)
+                .addComponent(btCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(131, 131, 131))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -309,9 +335,14 @@ public class ModificarAlbergueGUI extends javax.swing.JFrame {
                 .addGap(6, 6, 6)
                 .addComponent(lbTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbLista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cbLista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                       // .addComponent(lbId)
+                       // .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    		))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -324,9 +355,28 @@ public class ModificarAlbergueGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
-    private void tfDireccionActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        // TODO add your handling code here:
-    }                                           
+   public Albergue RegistryUpdates(ModificarAlbergueGUI this){
+	   Albergue a=new Albergue();
+	   a.setTipo(tfTipo.getText());
+	   a.setNombre(tfNombre.getText());
+	   a.setDireccion(tfDireccion.getText());
+	   a.setProvincia(cbProvincia.getSelectedItem().toString());
+	   a.setCodigoPostal(Integer.parseInt(tfCP.getText()));
+	   a.setMunicipio(tfMunicipio.getText());
+	   a.setLocalidad(tfLocalidad.getText());
+	   String[] tfs=new String[3];
+	   tfs[0]=tfTelefono1.getText();
+	   tfs[1]=tfTelefono2.getText();
+	   tfs[2]=tfTelefono3.getText();
+	   a.setTelefono(tfs);
+	   a.setFax(tfFax.getText());
+	   a.setWeb(tfWeb.getText());
+	   a.setEmail(tfEmail.getText());
+	   a.setCentralReservas(tfReservas.getText());
+	   
+	   return a;
+	   
+   }                                       
 
     /**
      * @param args the command line arguments
@@ -368,7 +418,6 @@ public class ModificarAlbergueGUI extends javax.swing.JFrame {
     private javax.swing.JButton btCancelar;
     private javax.swing.JComboBox<String> cbCalidad;
     private javax.swing.JComboBox<String> cbLista;
-    
     private javax.swing.JComboBox<String> cbProvincia;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -378,6 +427,7 @@ public class ModificarAlbergueGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lbDireccion;
     private javax.swing.JLabel lbEmail;
     private javax.swing.JLabel lbFax;
+    private javax.swing.JLabel lbId;
     private javax.swing.JLabel lbMunicipio;
     private javax.swing.JLabel lbNombre;
     private javax.swing.JLabel lbNucleo;
@@ -393,6 +443,7 @@ public class ModificarAlbergueGUI extends javax.swing.JFrame {
     private javax.swing.JTextField tfDireccion;
     private javax.swing.JTextField tfEmail;
     private javax.swing.JTextField tfFax;
+    private javax.swing.JTextField tfId;
     private javax.swing.JTextField tfLocalidad;
     private javax.swing.JTextField tfMunicipio;
     private javax.swing.JTextField tfNombre;
@@ -404,6 +455,5 @@ public class ModificarAlbergueGUI extends javax.swing.JFrame {
     private javax.swing.JTextField tfTipo;
     private javax.swing.JTextField tfWeb;
     private Object item;
-    
     // End of variables declaration                   
 }

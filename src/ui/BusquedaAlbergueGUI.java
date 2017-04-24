@@ -1,5 +1,9 @@
 package ui;
 
+import javax.swing.JFrame;
+
+import beans.Albergue;
+
 public class BusquedaAlbergueGUI extends javax.swing.JFrame {
 
 	    /**
@@ -48,8 +52,15 @@ public class BusquedaAlbergueGUI extends javax.swing.JFrame {
 	        );
 
 	        pack();
-	    }// </editor-fold>                        
-
+	    }// </editor-fold>               
+	    
+	    //metodo que recoge los texfields y crea el albergue con los nuevos valores
+	    public Albergue UpdateChanges(BusquedaAlbergueGUI this){
+	    	Albergue a =new Albergue();
+	    	
+	    	
+	    	return a;
+	    }
 	    /**
 	     * @param args the command line arguments
 	     */

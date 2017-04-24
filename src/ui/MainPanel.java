@@ -114,6 +114,8 @@ public class MainPanel extends javax.swing.JFrame {
         );
 
         pack();
+        
+        
     }// </editor-fold>                        
 
     /**
