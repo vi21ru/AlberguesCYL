@@ -117,5 +117,13 @@ public class Albergue {
 				+ ", nucleo=" + nucleo + ", telefono=" + Arrays.toString(telefono) + ", fax=" + fax + ", email=" + email
 				+ ", web=" + web + ", Qcalidad=" + Qcalidad + ", centralReservas=" + centralReservas + "]";
 	}
+	
+	public String toCSVString(){
+		return tipo + ";" + nombre + ";" + direccion + ";"
+				+ codigoPostal + ";" + provincia + ";" + municipio + ";" + localidad
+				+ ";" + nucleo + ";" + Arrays.toString(telefono) + ";" + fax + ";" + email
+				+ ";" + web + ";" + Qcalidad + ";" + centralReservas;
+		
+	}
 
 }

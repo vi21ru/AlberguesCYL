@@ -1,12 +1,20 @@
 package ui;
 
 import java.awt.Dimension;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.swing.GroupLayout;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 
 import beans.Albergue;
+
 
 public class DataTableAlbergues extends javax.swing.JFrame {
 
@@ -39,29 +47,70 @@ public class DataTableAlbergues extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        lbBuscar = new javax.swing.JLabel();
         tfBusqueda = new javax.swing.JTextField();
+        tfBusqueda.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				String busqueda=tfBusqueda.getText();
+				List resultado=new ArrayList();
+				for (Object object : albergues) {
+					if(((Albergue)object).toCSVString().toUpperCase().contains(busqueda.toUpperCase())){
+						System.out.println(((Albergue)object).toString());
+						resultado.add(object);
+					}
+				}
+				
+				miModelo.setDataVector(parseList(resultado), columnas);
+				jTable2.setModel(miModelo);
+				
+				
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 
       //"Tipo";"Nombre";"Dirección";"C.Postal";"Provincia";"Municipio";"Localidad";"Nucleo";"Teléfono 1";"Teléfono 2";"Teléfono 3";"Fax";"Email";"web";"Q Calidad";"Central Reservas";
         
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         columnas=new String [] {   "Tipo", "Nombre", "Direccion", "Codigo postal","Provincia","Municipio","Localidad","Nucleo","Telefono 1","Telefono 2","Telefono 3","Fax","Email","Web","Q Calidad","Central Reservas"};
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            parseList(albergues),columnas        
-            
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class,java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
+        miModelo=new javax.swing.table.DefaultTableModel(
+                parseList(albergues),columnas        
+                
+                ) {
+                    Class[] types = new Class [] {
+                        java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class,java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                    };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
+                    public Class getColumnClass(int columnIndex) {
+                        return types [columnIndex];
+                    }
+                };
+        jTable2.setModel(miModelo);
+        
         jTable2.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         
         jScrollPane1.setViewportView(jTable2);
-        
+        jTable2.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+            public void valueChanged(ListSelectionEvent event) {
+                // do some actions here, for example
+                // print first column value from selected row
+                //System.out.println(miModelo.getDataVector().elementAt(jTable2.getSelectedRow()));
+            	new AlbergueDetailsGUI(miModelo.getDataVector().elementAt(jTable2.getSelectedRow()));
+            }
+        });
         
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -74,14 +123,19 @@ public class DataTableAlbergues extends javax.swing.JFrame {
                 .addContainerGap()
                 
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(lbBuscar)
+                .addGap(27, 27, 27)
+                .addComponent(tfBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addComponent(lbBuscar)
+                .addComponent(tfBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         
@@ -125,8 +179,9 @@ public class DataTableAlbergues extends javax.swing.JFrame {
     // Variables declaration - do not modify                     
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lbBuscar;
     private javax.swing.JTextField tfBusqueda;
+    private DefaultTableModel miModelo;
     // End of variables declaration      
     
     private Object[][] parseList(List albergues){

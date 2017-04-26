@@ -1,6 +1,6 @@
 package ui;
 
-import ui.listeners.BuscarAlbergueListener;
+
 import ui.listeners.InsertarAlbergueListener;
 import ui.listeners.ListarAlberguesListener;
 import ui.listeners.ModificarAlbergueListener;
@@ -34,6 +34,7 @@ public class MainPanel extends javax.swing.JFrame {
         barraMenu = new javax.swing.JMenuBar();
         archivoItem = new javax.swing.JMenu();
         editarItem = new javax.swing.JMenu();
+        
         
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
