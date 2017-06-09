@@ -3,12 +3,11 @@ package ui;
 import java.util.Iterator;
 import java.util.Vector;
 
-import javax.swing.JEditorPane;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import beans.Albergue;
-import javafx.embed.swing.*;
-import javafx.scene.Scene;
+import javafx.embed.swing.JFXPanel;
 import javafx.scene.web.WebView;
 public class AlbergueDetailsGUI extends JFrame{
 
@@ -19,10 +18,10 @@ public class AlbergueDetailsGUI extends JFrame{
 	Albergue a;
     public AlbergueDetailsGUI(Object obj) {
         this.vector=(Vector)obj;
-    	initComponents();
     	Iterator it=vector.iterator();
     	a=new Albergue();
     	String[] telefonos = new String[3];
+    	System.out.println(vector.toString());
     	for(int i=0;i<vector.size();i++){
     		
     		switch (i) {
@@ -49,11 +48,8 @@ public class AlbergueDetailsGUI extends JFrame{
 		}
     		
     	}
-    	jTextField1.setText(a.getTipo());
-    	jTextField2.setText(a.getDireccion());
-    	jTextField3.setText(a.getLocalidad());
-    	view.getEngine().load(a.getWeb());
-    	this.setVisible(true);
+    	System.out.println(a.getTipo());
+    	initComponents(a);
     }
 
     
@@ -64,7 +60,7 @@ public class AlbergueDetailsGUI extends JFrame{
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
-    private void initComponents() {
+    private void initComponents(Albergue a) {
 
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -72,25 +68,30 @@ public class AlbergueDetailsGUI extends JFrame{
         jLabel3 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
+        jPanel1 = new JPanel();
         
-        jfxPanel=new JFXPanel();
-        this.add(jfxPanel);
+       
         
-        jfxPanel.setScene(new Scene(view));
+//        jfxPanel=new JFXPanel();
+//        this.add(jfxPanel);
+//        view=new WebView();
+//        jfxPanel.setScene(new Scene(view));
+//    	view.getEngine().load(a.getWeb());
+    	TestJFXPanel jfxPanel = new TestJFXPanel();
+    	jfxPanel.launch();
+    	
+        
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Tipo");
-
-        jTextField1.setText("");
 
         jLabel2.setText("Nombre");
 
         jLabel3.setText("Direccion");
 
-        jTextField2.setText("");
-
-        jTextField3.setText("");
+        jTextField1.setText(a.getTipo());
+    	jTextField2.setText(a.getDireccion());
+    	jTextField3.setText(a.getLocalidad());
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -145,6 +146,7 @@ public class AlbergueDetailsGUI extends JFrame{
         );
 
         pack();
+    	this.setVisible(true);
     }// </editor-fold>                        
 
     /**
@@ -177,7 +179,7 @@ public class AlbergueDetailsGUI extends JFrame{
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AlbergueDetailsGUI(null).setVisible(true);
+                //new AlbergueDetailsGUI(null).setVisible(true);
             }
         });
     }
@@ -186,11 +188,11 @@ public class AlbergueDetailsGUI extends JFrame{
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
+    private JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private JFXPanel jfxPanel;
-    WebView view=new WebView();
+   private WebView view;
     // End of variables declaration                   
 }

@@ -58,7 +58,7 @@ public class DataTableAlbergues extends javax.swing.JFrame {
 				List resultado=new ArrayList();
 				for (Object object : albergues) {
 					if(((Albergue)object).toCSVString().toUpperCase().contains(busqueda.toUpperCase())){
-						System.out.println(((Albergue)object).toString());
+						//System.out.println(((Albergue)object).toString());
 						resultado.add(object);
 					}
 				}
@@ -107,7 +107,8 @@ public class DataTableAlbergues extends javax.swing.JFrame {
             public void valueChanged(ListSelectionEvent event) {
                 // do some actions here, for example
                 // print first column value from selected row
-                //System.out.println(miModelo.getDataVector().elementAt(jTable2.getSelectedRow()));
+                System.out.println(miModelo.getDataVector().elementAt(jTable2.getSelectedRow()));
+            	
             	new AlbergueDetailsGUI(miModelo.getDataVector().elementAt(jTable2.getSelectedRow()));
             }
         });
@@ -120,22 +121,26 @@ public class DataTableAlbergues extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            	.addContainerGap()
+                .addComponent(lbBuscar)
+                .addComponent(tfBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                 
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE)
-                .addComponent(lbBuscar)
-                .addGap(27, 27, 27)
-                .addComponent(tfBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                
+                .addGap(27, 27, 27))
+                
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE)
-                .addComponent(lbBuscar)
-                .addComponent(tfBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            	.addContainerGap()
+            	.addComponent(lbBuscar)
+                .addComponent(tfBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        		
+            	.addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
+                
         );
 
         
