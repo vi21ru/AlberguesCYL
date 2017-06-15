@@ -77,9 +77,10 @@ public class AlbergueDetailsGUI extends JFrame{
 //        view=new WebView();
 //        jfxPanel.setScene(new Scene(view));
 //    	view.getEngine().load(a.getWeb());
-    	TestJFXPanel jfxPanel = new TestJFXPanel();
-    	jfxPanel.launch();
-    	
+        System.out.println("AlbergueDetails: "+a.toString());
+        JFXPanelRunnable rPanel=new JFXPanelRunnable(a);
+    	Thread thPanel=new Thread(rPanel);
+    	thPanel.start();
         
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 

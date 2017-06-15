@@ -15,9 +15,11 @@ public class TestJFXPanel extends Application
 //	Albergue a;
 	JFrame frame;
 //	
+	Albergue albergue=new Albergue();
 	
-	public void launch() {
+	public void launch(Albergue a) {
 		Application.launch(null);
+		albergue=a;
 	}
 	
 	@Override
@@ -28,9 +30,10 @@ public class TestJFXPanel extends Application
 		System.out.println("hola");
 		// Create the WebEngine
 		final WebEngine webEngine = webView.getEngine();
-		
+		System.out.println(albergue.getWeb());
+		String dir=albergue.getWeb();
 		// LOad the Start-Page
-		webEngine.load("http://www.marca.com");
+		webEngine.load(dir);
 		
 		JFXPanel panel=new JFXPanel();
 		
