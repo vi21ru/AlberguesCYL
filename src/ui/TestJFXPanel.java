@@ -15,25 +15,27 @@ public class TestJFXPanel extends Application
 //	Albergue a;
 	JFrame frame;
 //	
-	Albergue albergue=new Albergue();
+	static Albergue albergue;
 	
 	public void launch(Albergue a) {
+		System.out.println("TextJFXPanel.constructor: "+a.toString());
+		this.albergue=a;
 		Application.launch(null);
-		albergue=a;
+		
 	}
 	
 	@Override
 	public void start(final Stage stage) 
 	{
+		System.out.println("TestJFXPanel.start: "+albergue.toString());
 		// Create the WebView
 		WebView webView = new WebView();
-		System.out.println("hola");
 		// Create the WebEngine
 		final WebEngine webEngine = webView.getEngine();
 		System.out.println(albergue.getWeb());
 		String dir=albergue.getWeb();
 		// LOad the Start-Page
-		webEngine.load(dir);
+		webEngine.load("http://"+dir);
 		
 		JFXPanel panel=new JFXPanel();
 		

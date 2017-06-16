@@ -4,7 +4,7 @@ import beans.Albergue;
 
 public class JFXPanelRunnable implements Runnable{
 
-	Albergue albergue=new Albergue();
+	static Albergue albergue;
 	public JFXPanelRunnable(Albergue a) {
 		// TODO Auto-generated constructor stub
 		albergue=a;
@@ -14,6 +14,7 @@ public class JFXPanelRunnable implements Runnable{
 		//System.out.println("Runnable: "+albergue.toString());
 		// TODO Auto-generated method stub
 		TestJFXPanel jfxPanel = new TestJFXPanel();
+		System.out.println("JFXPanelRunnable: "+albergue.toString());
     	jfxPanel.launch(albergue);
 	}
 
