@@ -82,7 +82,7 @@ public class AlbergueDetailsGUI extends JFrame{
     	Thread thPanel=new Thread(rPanel);
     	thPanel.start();
         
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Tipo");
 

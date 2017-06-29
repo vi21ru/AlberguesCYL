@@ -15,7 +15,7 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
  */
 public class TestApachePDFBox {
  
-    public static final String DEST = "C:\\Users\\Angel\\hello_world.pdf";
+    public static final String DEST = "C:\\Users\\alex_\\hello_world.pdf";
  
     public static void main(String args[]) throws IOException {
      

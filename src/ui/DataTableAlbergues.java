@@ -84,7 +84,7 @@ public class DataTableAlbergues extends javax.swing.JFrame {
 
       //"Tipo";"Nombre";"Dirección";"C.Postal";"Provincia";"Municipio";"Localidad";"Nucleo";"Teléfono 1";"Teléfono 2";"Teléfono 3";"Fax";"Email";"web";"Q Calidad";"Central Reservas";
         
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         columnas=new String [] {   "Tipo", "Nombre", "Direccion", "Codigo postal","Provincia","Municipio","Localidad","Nucleo","Telefono 1","Telefono 2","Telefono 3","Fax","Email","Web","Q Calidad","Central Reservas"};
         miModelo=new javax.swing.table.DefaultTableModel(
                 parseList(albergues),columnas        
@@ -105,12 +105,14 @@ public class DataTableAlbergues extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable2);
         jTable2.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
             public void valueChanged(ListSelectionEvent event) {
-                // do some actions here, for example
-                // print first column value from selected row
-                System.out.println(miModelo.getDataVector().elementAt(jTable2.getSelectedRow()));
-            	
-            	new AlbergueDetailsGUI(miModelo.getDataVector().elementAt(jTable2.getSelectedRow()));
-            }
+            	if (!event.getValueIsAdjusting())
+    			{
+            		// do some actions here, for example
+            		// print first column value from selected row
+            		System.out.println(miModelo.getDataVector().elementAt(jTable2.getSelectedRow()));            	
+            		new AlbergueDetailsGUI(miModelo.getDataVector().elementAt(jTable2.getSelectedRow()));
+    			}
+    		}
         });
         
 

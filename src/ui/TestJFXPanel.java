@@ -1,9 +1,13 @@
 package ui;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 import javax.swing.JFrame;
 
 import beans.Albergue;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.Scene;
 import javafx.scene.web.WebEngine;
@@ -47,6 +51,9 @@ public class TestJFXPanel extends Application
 		this.frame.add(panel);
 		this.frame.setVisible(true);
 		System.out.println("hola2");
+	
+		Platform.setImplicitExit(false);
 		//frame.setSize(400, 600);
 	}
+	
 }
